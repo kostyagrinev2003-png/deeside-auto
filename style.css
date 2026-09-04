@@ -526,3 +526,16 @@ footer p {
         width: 100%;
     }
 }
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block !important;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 99999;
+        color: red;
+        background: white;
+        font-size: 40px;
+    }
+}
