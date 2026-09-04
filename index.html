@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My first site</title> 
+    <link rel="stylesheet" href="style.css">
+</head>
+    
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">DEESIDE AUTO</div>
+
+        <nav>
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+</nav>
+    </header>
+
+   <main class="hero" id="home">
+
+    <div class="hero-content">
+
+        <p class="small-title">PREMIUM CAR DETAILING</p>
+
+        <h1>Make Your Car<br>Look Brand New</h1>
+
+        <p class="description">
+            Professional car detailing and valeting
+            in Deeside. Quality service for your car.
+        </p>
+
+        <div class="buttons">
+    <a href="#contact" class="book-button">Book Now</a>
+    <a href="#services">View Services</a>
+</div>
+
+    </div>
+
+    <div class="hero-image">
+        <img src="images/car.jpg" alt="Professional car detailing">
+    </div>
+
+</main>
+<section class="services" id="services">
+
+    <p class="small-title">WHAT WE DO</p>
+
+    <h2>Our Services</h2>
+
+    <div class="service-cards">
+
+        <div class="service-card">
+            <h3>Full Valet</h3>
+            <p>Complete exterior and interior cleaning for your vehicle.</p>
+            <span>£80</span>
+        </div>
+
+        <div class="service-card">
+            <h3>Interior Detail</h3>
+            <p>Deep interior cleaning and restoration for a fresh finish.</p>
+            <span>£100</span>
+        </div>
+
+        <div class="service-card">
+            <h3>Ceramic Coating</h3>
+            <p>Long-lasting paint protection with a premium glossy finish.</p>
+            <span>£300</span>
+        </div>
+
+    </div>
+
+</section>
+<section class="gallery" id="gallery">
+ <h2>Gallery</h2>
+
+    <div class="gallery-grid">
+
+        <img src="images/car1.jpg" alt="Car detailing">
+        <img src="images/car2.jpg" alt="Car detailing">
+        <img src="images/car3.jpg" alt="Car detailing">
+        <img src="images/car4.jpg" alt="Car detailing">
+
+    </div>
+
+</section>
+<section class="contact" id="contact">
+
+    <p class="small-title">GET IN TOUCH</p>
+
+    <h2>Book Your Car</h2>
+
+    <div class="contact-container">
+
+        <div class="contact-info">
+            <h3>Let's take care of your car.</h3>
+
+            <p>
+                Ready to give your car a fresh new look?
+                Send us a message and we'll get back to you.
+            </p>
+
+            <p>📍 Deeside, UK</p>
+            <p>📞 01234 567890</p>
+            <p>✉️ hello@deesideauto.co.uk</p>
+        </div>
+
+       <form
+    class="contact-form"
+    action="https://formspree.io/f/mgaezrvd"
+    method="POST"
+>
+
+    <input
+        type="text"
+        name="name"
+        placeholder="Your name"
+        required
+    >
+
+    <input
+        type="email"
+        name="email"
+        placeholder="Your email"
+        required
+    >
+
+    <input
+        type="tel"
+        name="phone"
+        placeholder="Your phone"
+        required
+    >
+
+    <select name="service" required>
+        <option value="">Select a service</option>
+        <option value="Full Valet">Full Valet</option>
+        <option value="Interior Detail">Interior Detail</option>
+        <option value="Ceramic Coating">Ceramic Coating</option>
+    </select>
+
+    <textarea
+        name="message"
+        placeholder="Tell us about your car"
+    ></textarea>
+
+    <button type="submit">Send Request</button>
+    <p class="form-message"></p>
+
+</form>
+
+    </div>
+
+</section>
+<footer>
+
+    <div class="footer-logo">DEESIDE AUTO</div>
+
+    <p>Professional car detailing in Deeside, UK.</p>
+
+    <p class="copyright">
+        © 2026 Deeside Auto. All rights reserved.
+    </p>
+
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
