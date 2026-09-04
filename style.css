@@ -385,6 +385,13 @@ nav a:hover {
         gap: 40px;
     }
 
+    .about {
+    padding: 70px 20px;
+}
+
+.about h2 {
+    font-size: 38px;
+}
 }
 
 footer {
@@ -427,4 +434,42 @@ footer p {
     background-color: #3a1d1d;
     color: #ff8a8a;
 }
+
+.contact-info a {
+    color: white;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    opacity: 0.7;
+}
   
+.map {
+    margin-top: 30px;
+}
+
+.map iframe {
+    border-radius: 15px;
+}
+
+.about {
+    padding: 100px 50px;
+    border-top: 1px solid #333333;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 48px;
+    margin: 10px 0 30px;
+}
+
+.about p {
+    color: #aaaaaa;
+    line-height: 1.8;
+    font-size: 18px;
+}
