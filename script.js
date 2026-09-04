@@ -1,0 +1,33 @@
+const form = document.querySelector(".contact-form");
+const message = document.querySelector(".form-message");
+
+form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+
+    try {
+        const response = await fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+                Accept: "application/json"
+            }
+        });
+
+        if (response.ok) {
+            message.textContent =
+                "✓ Request sent successfully! We'll contact you shortly.";
+            message.className = "form-message success";
+            form.reset();
+        } else {
+            message.textContent =
+                "Something went wrong. Please try again.";
+            message.className = "form-message error";
+        }
+    } catch (error) {
+        message.textContent =
+            "Something went wrong. Please try again.";
+        message.className = "form-message error";
+    }
+});
