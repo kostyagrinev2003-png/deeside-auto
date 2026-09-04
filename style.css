@@ -318,8 +318,12 @@ nav a:hover {
     cursor: pointer;
 }
 @media (max-width: 768px) {
-     .menu-toggle {
+    menu-toggle {
         display: block;
+    }
+
+    header nav {
+        display: none;
     }
 
     header {
