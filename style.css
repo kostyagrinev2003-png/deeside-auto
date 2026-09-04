@@ -318,6 +318,21 @@ nav a:hover {
     cursor: pointer;
 }
 @media (max-width: 768px) {
+     .menu-toggle {
+        display: block;
+    }
+
+    header {
+        padding: 20px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 
     header {
         padding: 20px;
@@ -409,26 +424,6 @@ nav a:hover {
 
 .map {
     margin-bottom: 30px;
-}
-
-.menu-toggle {
-    display: block;
-}
-
-header nav {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: #111111;
-    padding: 20px;
-    flex-direction: column;
-    gap: 20px;
-}
-
-header nav.active {
-    display: flex;
 }
 }
 
