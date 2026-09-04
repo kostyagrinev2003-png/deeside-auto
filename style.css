@@ -339,18 +339,6 @@ nav a:hover {
         justify-content: center;
     }
 
-    header {
-        padding: 20px;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    nav {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
    .hero {
     min-height: auto;
     flex-direction: column;
