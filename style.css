@@ -541,3 +541,16 @@ footer p {
         width: 100%;
     }
 }
+
+@media (max-width: 768px) {
+    header {
+        display: flex;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+
+    .menu-toggle {
+        margin-left: auto;
+    }
+}
