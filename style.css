@@ -392,6 +392,10 @@ nav a:hover {
 .about h2 {
     font-size: 38px;
 }
+
+.map {
+    margin-bottom: 30px;
+}
 }
 
 footer {
@@ -446,6 +450,7 @@ footer p {
   
 .map {
     margin-top: 30px;
+    margin-bottom: 40px;
 }
 
 .map iframe {
