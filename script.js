@@ -31,3 +31,10 @@ form.addEventListener("submit", async function (event) {
         message.className = "form-message error";
     }
 });
+
+const menuButton = document.querySelector(".menu-toggle");
+const nav = document.querySelector("header nav");
+
+menuButton.addEventListener("click", function () {
+    nav.classList.toggle("active");
+});
