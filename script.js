@@ -67,12 +67,18 @@ const serviceButtons = document.querySelectorAll(".service-book");
 const serviceSelect = document.querySelector('select[name="service"]');
 
 serviceButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
+    button.addEventListener("click", function (event) {
+        event.preventDefault();
+
         const selectedService = button.dataset.service;
         serviceSelect.value = selectedService;
+
+        document.querySelector("#booking-form").scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
     });
 });
-
 const dateInput = document.querySelector('input[name="date"]');
 
 const today = new Date();
