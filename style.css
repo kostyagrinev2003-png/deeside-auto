@@ -163,8 +163,9 @@ hero {
     padding: 40px 30px;
     border-radius: 15px;
     text-align: left;
+    display: flex;
+    flex-direction: column;
 }
-
 .service-card h3 {
     font-size: 26px;
     margin-top: 0;
@@ -174,6 +175,7 @@ hero {
     color: #aaaaaa;
     line-height: 1.6;
     min-height: 80px;
+    flex-grow: 1;
 }
 
 .service-card span {
