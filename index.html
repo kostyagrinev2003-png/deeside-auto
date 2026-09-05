@@ -112,6 +112,72 @@
     </div>
 
 </section>
+
+<section class="reviews reveal" id="reviews">
+
+    <p class="small-title">WHAT OUR CLIENTS SAY</p>
+    <h2>Customer Reviews</h2>
+
+    <div class="review-cards">
+
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>
+                "Excellent service and attention to detail. Would definitely recommend."
+            </p>
+            <span>— Sarah M.</span>
+        </div>
+
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>
+                "Ceramic coating came out amazing. Really professional finish."
+            </p>
+            <span>— Daniel T.</span>
+        </div>
+
+    </div>
+<button type="button" class="leave-review-button">
+    Leave a Review
+</button>
+
+  <form
+    class="review-form"
+    action="https://formspree.io/f/mgaezrvd"
+    method="POST"
+>
+<input
+    type="text"
+    name="review_name"
+    placeholder="Your name"
+    required
+>
+
+        <select name="rating" required>
+        <option value="">Select rating</option>
+        <option value="5">★★★★★ — 5 stars</option>
+        <option value="4">★★★★☆ — 4 stars</option>
+        <option value="3">★★★☆☆ — 3 stars</option>
+        <option value="2">★★☆☆☆ — 2 stars</option>
+        <option value="1">★☆☆☆☆ — 1 star</option>
+    </select>
+
+    <textarea
+        name="review"
+        placeholder="Write your review"
+        required
+    ></textarea>
+
+    <button type="submit">
+        Submit Review
+    </button>
+
+    <p class="review-success">
+    ✓ Thank you! Your review has been submitted.
+</p>
+
+</form>
+</section>
 <section class="contact reveal" id="contact">
 
     <p class="small-title">GET IN TOUCH</p>

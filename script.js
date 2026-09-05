@@ -87,3 +87,45 @@ const month = String(today.getMonth() + 1).padStart(2, "0");
 const day = String(today.getDate()).padStart(2, "0");
 
 dateInput.min = `${year}-${month}-${day}`;
+const reviewForm = document.querySelector(".review-form");
+
+reviewForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(reviewForm);
+
+    const response = await fetch(reviewForm.action, {
+        method: reviewForm.method,
+        body: formData,
+        headers: {
+            Accept: "application/json"
+        }
+    });
+
+   if (response.ok) {
+    reviewForm.reset();
+
+    const successMessage = document.querySelector(".review-success");
+    successMessage.classList.add("show");
+
+    setTimeout(function () {
+        successMessage.classList.remove("show");
+    }, 5000);
+
+} else {
+    alert("Something went wrong. Please try again.");
+}
+
+});
+
+const leaveReviewButton = document.querySelector(".leave-review-button");
+
+leaveReviewButton.addEventListener("click", function () {
+    reviewForm.classList.toggle("show");
+
+    if (reviewForm.classList.contains("show")) {
+        leaveReviewButton.textContent = "Close Review Form";
+    } else {
+        leaveReviewButton.textContent = "Leave a Review";
+    }
+});
