@@ -1,3 +1,6 @@
+const SUPABASE_URL = "https://wteaesiyktwcoheyfatd.supabase.co";
+const SUPABASE_KEY = "sb_publishable_WLAH_yCrEj6aBbgxogFuTQ_JKen_ciI";
+
 const form = document.querySelector(".contact-form");
 const message = document.querySelector(".form-message");
 
@@ -94,28 +97,43 @@ reviewForm.addEventListener("submit", async function (event) {
 
     const formData = new FormData(reviewForm);
 
-    const response = await fetch(reviewForm.action, {
-        method: reviewForm.method,
-        body: formData,
-        headers: {
-            Accept: "application/json"
+    const reviewData = {
+        name: formData.get("review_name"),
+        rating: Number(formData.get("rating")),
+        review: formData.get("review"),
+        approved: false
+    };
+
+    try {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/reviews`, {
+            method: "POST",
+            headers: {
+                "apikey": SUPABASE_KEY,
+                "Authorization": `Bearer ${SUPABASE_KEY}`,
+                "Content-Type": "application/json",
+                "Prefer": "return=minimal"
+            },
+            body: JSON.stringify(reviewData)
+        });
+
+        if (response.ok) {
+            reviewForm.reset();
+
+            const successMessage = document.querySelector(".review-success");
+            successMessage.classList.add("show");
+
+            setTimeout(function () {
+                successMessage.classList.remove("show");
+            }, 5000);
+        } else {
+            console.error(await response.text());
+            alert("Something went wrong. Please try again.");
         }
-    });
 
-   if (response.ok) {
-    reviewForm.reset();
-
-    const successMessage = document.querySelector(".review-success");
-    successMessage.classList.add("show");
-
-    setTimeout(function () {
-        successMessage.classList.remove("show");
-    }, 5000);
-
-} else {
-    alert("Something went wrong. Please try again.");
-}
-
+    } catch (error) {
+        console.error(error);
+        alert("Something went wrong. Please try again.");
+    }
 });
 
 const leaveReviewButton = document.querySelector(".leave-review-button");
@@ -129,3 +147,49 @@ leaveReviewButton.addEventListener("click", function () {
         leaveReviewButton.textContent = "Leave a Review";
     }
 });
+
+async function loadApprovedReviews() {
+    try {
+        const response = await fetch(
+            `${SUPABASE_URL}/rest/v1/reviews?approved=eq.true&select=name,rating,review,created_at&order=created_at.desc`,
+            {
+                headers: {
+                    "apikey": SUPABASE_KEY,
+                    "Authorization": `Bearer ${SUPABASE_KEY}`
+                }
+            }
+        );
+
+        if (!response.ok) {
+            console.error(await response.text());
+            return;
+        }
+
+        const reviews = await response.json();
+        const reviewCards = document.querySelector(".review-cards");
+
+        if (!reviewCards) return;
+
+        reviewCards.innerHTML = "";
+
+        reviews.forEach(function (item) {
+            const card = document.createElement("div");
+            card.className = "review-card";
+
+            const stars = "★".repeat(item.rating) + "☆".repeat(5 - item.rating);
+
+            card.innerHTML = `
+                <div class="stars">${stars}</div>
+                <p>"${item.review}"</p>
+                <span>— ${item.name}</span>
+            `;
+
+            reviewCards.appendChild(card);
+        });
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+loadApprovedReviews();
