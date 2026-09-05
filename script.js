@@ -72,3 +72,12 @@ serviceButtons.forEach(function (button) {
         serviceSelect.value = selectedService;
     });
 });
+
+const dateInput = document.querySelector('input[name="date"]');
+
+const today = new Date();
+const year = today.getFullYear();
+const month = String(today.getMonth() + 1).padStart(2, "0");
+const day = String(today.getDate()).padStart(2, "0");
+
+dateInput.min = `${year}-${month}-${day}`;
