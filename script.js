@@ -38,3 +38,11 @@ const nav = document.querySelector("header nav");
 menuButton.addEventListener("click", function () {
     nav.classList.toggle("active");
 });
+
+const navLinks = document.querySelectorAll("header nav a");
+
+navLinks.forEach(function (link) {
+    link.addEventListener("click", function () {
+        nav.classList.remove("active");
+    });
+});
