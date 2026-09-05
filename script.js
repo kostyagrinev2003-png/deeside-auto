@@ -62,3 +62,13 @@ const revealObserver = new IntersectionObserver(function (entries) {
 revealElements.forEach(function (element) {
     revealObserver.observe(element);
 });
+
+const serviceButtons = document.querySelectorAll(".service-book");
+const serviceSelect = document.querySelector('select[name="service"]');
+
+serviceButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+        const selectedService = button.dataset.service;
+        serviceSelect.value = selectedService;
+    });
+});
