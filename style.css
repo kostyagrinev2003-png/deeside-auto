@@ -1,33 +1,50 @@
+/* =========================
+   BASE
+========================= */
+
 html {
     scroll-behavior: smooth;
 }
-        body {
-            background-color: #111111;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
 
-        h1 {
-            font-size: 50px;
-        }
+body {
+    margin: 0;
+    background-color: #111111;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
 
-        p {
-            font-size: 20px;
-            color: #aaaaaa;
-        }
+h1 {
+    font-size: 50px;
+}
 
-        button {
-            background-color: white;
-            color: black;
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
+p {
+    font-size: 20px;
+    color: #aaaaaa;
+}
 
-        header {
+button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    opacity: 0.85;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,7 +54,6 @@ html {
     top: 0;
     z-index: 1000;
     background-color: #111111;
-
 }
 
 .logo {
@@ -53,32 +69,38 @@ nav {
 nav a {
     color: white;
     text-decoration: none;
+    transition: 0.3s;
 }
 
-main {
-    padding-top: 150px;
+nav a:hover {
+    opacity: 0.6;
 }
 
-main h1 {
-    font-size: 60px;
-    margin-bottom: 20px;
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
 }
 
-main p {
-    font-size: 22px;
-    color: #aaaaaa;
-    margin-bottom: 35px;
-}
+
+/* =========================
+   HERO
+========================= */
 
 .hero {
     min-height: 650px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 60px;
     padding: 0 50px;
 }
 
 .hero-content {
-    max-width: 700px;
+    max-width: 600px;
 }
 
 .small-title {
@@ -91,7 +113,7 @@ main p {
 .hero h1 {
     font-size: 70px;
     line-height: 1.05;
-    margin: 0 0 25px 0;
+    margin: 0 0 25px;
 }
 
 .description {
@@ -114,17 +136,18 @@ main p {
     font-size: 17px;
 }
 
-.hero {
-    min-height: 650px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 60px;
-    padding: 0 50px;
+.buttons .book-button {
+    background-color: white;
+    color: black;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 18px;
+    transition: 0.3s;
 }
 
-.hero-content {
-    max-width: 600px;
+.buttons .book-button:hover {
+    transform: translateY(-2px);
+    opacity: 0.85;
 }
 
 .hero-image {
@@ -139,8 +162,25 @@ main p {
     display: block;
 }
 
+
+/* =========================
+   SECTIONS
+========================= */
+
+.services,
+.about,
+.gallery,
+.contact {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+
+/* SERVICES */
+
 .services {
-    padding: 100px 50px;
+    padding-left: 50px;
+    padding-right: 50px;
     text-align: center;
     border-top: 1px solid #333333;
 }
@@ -165,7 +205,13 @@ main p {
     text-align: left;
     display: flex;
     flex-direction: column;
+    transition: 0.3s;
 }
+
+.service-card:hover {
+    transform: translateY(-8px);
+}
+
 .service-card h3 {
     font-size: 26px;
     margin-top: 0;
@@ -179,13 +225,56 @@ main p {
 }
 
 .service-card span {
-    font-size: 28px;
+    display: block;
+    margin-top: 20px;
+    font-size: 24px;
     font-weight: bold;
 }
 
-.gallery {
-    padding: 100px 50px;
+.service-book {
+    display: block;
+    margin-top: 22px;
+    padding: 13px 20px;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
     text-align: center;
+}
+
+
+/* ABOUT */
+
+.about {
+    padding-left: 50px;
+    padding-right: 50px;
+    border-top: 1px solid #333333;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about h2 {
+    font-size: 34px;
+    line-height: 1.2;
+    margin: 10px 0 30px;
+}
+
+.about p {
+    color: #aaaaaa;
+    line-height: 1.8;
+    font-size: 18px;
+}
+
+
+/* GALLERY */
+
+.gallery {
+    padding-left: 50px;
+    padding-right: 50px;
     border-top: 1px solid #333333;
 }
 
@@ -207,15 +296,23 @@ main p {
     height: 350px;
     object-fit: cover;
     border-radius: 15px;
+    transition: 0.3s;
 }
 
+.gallery-grid img:hover {
+    transform: scale(1.02);
+}
+
+
+/* CONTACT */
+
 .contact {
-    padding: 100px 50px;
+    padding-left: 50px;
+    padding-right: 50px;
     border-top: 1px solid #333333;
 }
 
 .contact h2 {
-    text-align: center;
     font-size: 50px;
     margin: 10px 0 60px;
 }
@@ -235,6 +332,12 @@ main p {
 .contact-info p {
     color: #aaaaaa;
     line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+.contact-info a {
+    color: white;
+    text-decoration: none;
 }
 
 .contact-form {
@@ -260,353 +363,14 @@ main p {
 }
 
 .contact-form button {
+    width: fit-content;
     margin-top: 5px;
-}
-
-button {
-    transition: 0.3s;
-}
-
-button:hover {
-    transform: translateY(-2px);
-    opacity: 0.85;
-}
-
-.service-card {
-    transition: 0.3s;
-}
-
-.service-card:hover {
-    transform: translateY(-8px);
-}
-
-.gallery-grid img {
-    transition: 0.3s;
-}
-
-.gallery-grid img:hover {
-    transform: scale(1.02);
-}
-
-nav a {
-    transition: 0.3s;
-}
-
-nav a:hover {
-    opacity: 0.6;
-}
-
-.buttons .book-button {
-    background-color: white;
-    color: black;
-    padding: 15px 30px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 18px;
-    transition: 0.3s;
-}
-.buttons .book-button:hover {
-    transform: translateY(-2px);
-    opacity: 0.85;
-}
-
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 28px;
-    cursor: pointer;
-}
-
-.service-book {
-    display: block;
-    margin-top: 22px;
-    padding: 13px 20px;
-    background-color: white;
-    color: black;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    text-align: center;
-    transition: 0.3s;
-}
-
-.service-book:hover {
-    transform: translateY(-2px);
-    opacity: 0.85;
-}
-
-.service-card span {
-    display: block;
-    margin-top: 20px;
-    font-size: 24px;
-    font-weight: bold;
-}
-@media (max-width: 768px) {
-   .menu-toggle {
-    display: block;
-}
-
-    header nav {
-        display: none;
-    }
-
-    header {
-    padding: 20px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-    nav {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-   .hero {
-    position: relative;
-    min-height: 700px;
-    padding: 70px 25px;
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: flex-start;
-    justify-content: flex-start;
-
-    text-align: left;
-
-    overflow: hidden;
-
-    background-image:
-        linear-gradient(
-            to bottom,
-            rgba(17, 17, 17, 0.95) 0%,
-            rgba(17, 17, 17, 0.80) 35%,
-            rgba(17, 17, 17, 0.35) 65%,
-            rgba(17, 17, 17, 0.05) 100%
-        ),
-        url("images/car.jpg");
-
-    background-size: cover;
-    background-position: center bottom;
-    background-repeat: no-repeat;
-}
-
-    .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 100%;
-}
-
-   .hero h1 {
-    font-size: 38px;
-    line-height: 1.1;
-}
-
-    .description {
-        font-size: 18px;
-    }
-
-    .buttons {
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-    .hero-image {
-        width: 100%;
-    }
-
-    .services {
-        padding: 70px 20px;
-    }
-
-    .services h2,
-    .gallery h2,
-    .contact h2 {
-        font-size: 40px;
-    }
-
-    .service-cards {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery {
-        padding: 70px 20px;
-    }
-
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery-grid img {
-        height: 300px;
-    }
-
-    .contact {
-        padding: 70px 20px;
-    }
-
-    .contact-container {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .about {
-    padding: 70px 20px;
-}
-
-.about h2 {
-    font-size: 38px;
-}
-
-.map {
-    margin-bottom: 30px;
-}
-
-.menu-toggle {
-    display: block;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-header nav {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: #111111;
-    padding: 25px;
-    flex-direction: column;
-    gap: 20px;
-    border-top: 1px solid #333333;
-}
-
-header nav.active {
-    display: flex;
-}
-
-.contact-form {
-    margin-bottom: 40px;
-}
-
-footer {
-    padding-top: 35px;
-    padding-bottom: 25px;
-}
-
-footer p {
-    margin: 8px 0;
-}
-
-.hero {
-    position: relative;
-    min-height: 700px;
-    padding: 55px 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    text-align: left;
-    overflow: hidden;
-
-    background-image:
-        linear-gradient(
-            to bottom,
-            rgba(17, 17, 17, 0.95) 0%,
-            rgba(17, 17, 17, 0.88) 25%,
-            rgba(17, 17, 17, 0.55) 52%,
-            rgba(17, 17, 17, 0.15) 100%
-        ),
-        url("images/car.jpg");
-
-    background-size: cover;
-    background-position: center bottom;
-    background-repeat: no-repeat;
-}
-
-.hero-content {
-    display: block !important;
-    position: relative;
-    z-index: 10;
-    width: 100%;
-    max-width: 350px;
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
-}
-
-.hero-content .small-title {
-    display: block;
-    color: #bbbbbb;
-    font-size: 12px;
-    letter-spacing: 3px;
-    margin: 0 0 18px 0;
-}
-
-.hero-content h1 {
-    display: block;
-    color: white;
-    font-size: 38px;
-    line-height: 1.08;
-    margin: 0 0 20px 0;
-}
-
-.hero-content .description {
-    display: block;
-    color: #cccccc;
-    font-size: 17px;
-    line-height: 1.5;
-    margin: 0 0 28px 0;
-}
-
-.hero-content .buttons {
-    display: flex !important;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.hero-image {
-    display: none !important;
-}
-
-}
-
-footer {
-    border-top: 1px solid #333333;
-    padding: 50px;
-    text-align: center;
-}
-
-.footer-logo {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-footer p {
-    color: #777777;
-}
-
-.copyright {
-    font-size: 14px;
-    margin-top: 25px;
 }
 
 .form-message {
     display: none;
     padding: 15px;
     border-radius: 8px;
-    text-align: center;
     font-size: 16px;
 }
 
@@ -622,15 +386,6 @@ footer p {
     color: #ff8a8a;
 }
 
-.contact-info a {
-    color: white;
-    text-decoration: none;
-}
-
-.contact-info a:hover {
-    opacity: 0.7;
-}
-  
 .map {
     margin-top: 30px;
     margin-bottom: 40px;
@@ -640,76 +395,36 @@ footer p {
     border-radius: 15px;
 }
 
-.about {
-    padding: 100px 50px;
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
     border-top: 1px solid #333333;
+    padding: 50px;
 }
 
-.about-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
+.footer-logo {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
 
-.about h2 {
-    font-size: 48px;
-    margin: 10px 0 30px;
+footer p {
+    color: #777777;
+    margin: 8px 0;
 }
 
-.about p {
-    color: #aaaaaa;
-    line-height: 1.8;
-    font-size: 18px;
+.copyright {
+    font-size: 14px;
+    margin-top: 25px;
 }
 
-.contact-info p {
-    margin-bottom: 16px;
-}
 
-.contact-form button {
-    width: fit-content;
-    padding: 15px 30px;
-}
-
-@media (max-width: 768px) {
-    .contact-form button {
-        width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    header {
-        display: flex;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-    }
-
-    .menu-toggle {
-        margin-left: auto;
-    }
-}
-
-.services,
-.about,
-.gallery,
-.contact {
-    padding-top: 60px;
-    padding-bottom: 60px;
-}
-
-.about h2 {
-    font-size: 34px;
-    line-height: 1.2;
-}
-
-.about-content {
-    max-width: 100%;
-}
-
-.contact {
-    padding-top: 60px;
-}
+/* =========================
+   ANIMATIONS
+========================= */
 
 .reveal {
     opacity: 0;
@@ -722,85 +437,154 @@ footer p {
     transform: translateY(0);
 }
 
+
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 768px) {
 
-    .hero {
-    position: relative !important;
-    min-height: 620px !important;
-    padding: 45px 25px !important;
-
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    justify-content: flex-start !important;
-    text-align: left !important;
-
-    background-image:
-        linear-gradient(
-            to bottom,
-            rgba(17, 17, 17, 0.92) 0%,
-            rgba(17, 17, 17, 0.78) 35%,
-            rgba(17, 17, 17, 0.30) 65%,
-            rgba(17, 17, 17, 0.05) 100%
-        ),
-        url("images/car.jpg") !important;
-
-    background-size: cover !important;
-    background-position: center bottom !important;
-    background-repeat: no-repeat !important;
-}
-
-    .hero-content {
-        display: block !important;
-        position: relative !important;
-        z-index: 999 !important;
-        width: 100% !important;
-        max-width: 350px !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        transform: none !important;
+    header {
+        padding: 20px;
     }
 
-    .hero-content * {
-        opacity: 1 !important;
-        visibility: visible !important;
+    .menu-toggle {
+        display: block;
+        margin-left: auto;
+        font-size: 30px;
+    }
+
+    header nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        box-sizing: border-box;
+        background-color: #111111;
+        padding: 25px;
+        flex-direction: column;
+        gap: 20px;
+        border-top: 1px solid #333333;
+    }
+
+    header nav.active {
+        display: flex;
+    }
+
+    .hero {
+        position: relative;
+        min-height: 620px;
+        padding: 45px 25px;
+        box-sizing: border-box;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: left;
+        overflow: hidden;
+
+        background-image:
+            linear-gradient(
+                to bottom,
+                rgba(17, 17, 17, 0.92) 0%,
+                rgba(17, 17, 17, 0.78) 35%,
+                rgba(17, 17, 17, 0.30) 65%,
+                rgba(17, 17, 17, 0.05) 100%
+            ),
+            url("images/car.jpg");
+
+        background-size: cover;
+        background-position: center bottom;
+        background-repeat: no-repeat;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 350px;
     }
 
     .hero-content .small-title {
-        color: #bbbbbb !important;
-        font-size: 12px !important;
-        letter-spacing: 3px !important;
-        margin-bottom: 18px !important;
+        color: #bbbbbb;
+        font-size: 12px;
+        letter-spacing: 3px;
+        margin: 0 0 18px;
     }
-.hero-content h1 {
-    font-size: 36px !important;
-    line-height: 1.08 !important;
-    margin: 0 0 18px 0 !important;
-}
+
+    .hero-content h1 {
+        color: white;
+        font-size: 36px;
+        line-height: 1.08;
+        margin: 0 0 18px;
+    }
+
     .hero-content .description {
-        color: #cccccc !important;
-        font-size: 17px !important;
-        line-height: 1.5 !important;
-        margin-bottom: 28px !important;
+        color: #cccccc;
+        font-size: 17px;
+        line-height: 1.5;
+        margin: 0 0 28px;
     }
 
     .hero-content .buttons {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 18px !important;
-    flex-wrap: nowrap !important;
-}
+        display: flex;
+        justify-content: flex-start;
+        gap: 18px;
+        flex-wrap: nowrap;
+    }
 
-.hero-content .buttons a {
-    white-space: nowrap;
-}
+    .hero-content .buttons a {
+        white-space: nowrap;
+    }
 
-.hero-content .book-button {
-    padding: 14px 25px !important;
-}
+    .hero-content .book-button {
+        padding: 14px 25px;
+    }
 
     .hero-image {
-        display: none !important;
+        display: none;
+    }
+
+    .services,
+    .about,
+    .gallery,
+    .contact {
+        padding: 70px 20px;
+    }
+
+    .services h2,
+    .gallery h2,
+    .contact h2 {
+        font-size: 40px;
+    }
+
+    .about h2 {
+        font-size: 38px;
+    }
+
+    .service-cards,
+    .gallery-grid,
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid img {
+        height: 300px;
+    }
+
+    .contact-container {
+        gap: 40px;
+    }
+
+    .contact-form {
+        margin-bottom: 40px;
+    }
+
+    .contact-form button {
+        width: 100%;
+    }
+
+    footer {
+        padding: 35px 20px 25px;
     }
 }
