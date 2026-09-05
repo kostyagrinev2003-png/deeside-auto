@@ -70,7 +70,7 @@ main p {
     margin-bottom: 35px;
 }
 
-hero {
+.hero {
     min-height: 650px;
     display: flex;
     align-items: center;
@@ -344,9 +344,9 @@ nav a:hover {
     font-weight: bold;
 }
 @media (max-width: 768px) {
-    menu-toggle {
-        display: block;
-    }
+   .menu-toggle {
+    display: block;
+}
 
     header nav {
         display: none;
@@ -504,8 +504,9 @@ footer {
 
 footer p {
     margin: 8px 0;
+}
 
-    .hero {
+.hero {
     position: relative;
     min-height: 700px;
     padding: 55px 25px;
