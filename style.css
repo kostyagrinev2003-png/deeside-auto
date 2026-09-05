@@ -725,30 +725,30 @@ footer p {
 @media (max-width: 768px) {
 
     .hero {
-        position: relative !important;
-        min-height: 700px !important;
-        padding: 55px 25px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        justify-content: flex-start !important;
-        text-align: left !important;
-        overflow: hidden !important;
+    position: relative !important;
+    min-height: 620px !important;
+    padding: 45px 25px !important;
 
-        background-image:
-            linear-gradient(
-                to bottom,
-                rgba(17, 17, 17, 0.96) 0%,
-                rgba(17, 17, 17, 0.82) 30%,
-                rgba(17, 17, 17, 0.45) 60%,
-                rgba(17, 17, 17, 0.10) 100%
-            ),
-            url("images/car.jpg") !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
 
-        background-size: cover !important;
-        background-position: center bottom !important;
-        background-repeat: no-repeat !important;
-    }
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(17, 17, 17, 0.92) 0%,
+            rgba(17, 17, 17, 0.78) 35%,
+            rgba(17, 17, 17, 0.30) 65%,
+            rgba(17, 17, 17, 0.05) 100%
+        ),
+        url("images/car.jpg") !important;
+
+    background-size: cover !important;
+    background-position: center bottom !important;
+    background-repeat: no-repeat !important;
+}
 
     .hero-content {
         display: block !important;
@@ -772,14 +772,11 @@ footer p {
         letter-spacing: 3px !important;
         margin-bottom: 18px !important;
     }
-
-    .hero-content h1 {
-        color: white !important;
-        font-size: 38px !important;
-        line-height: 1.08 !important;
-        margin: 0 0 20px 0 !important;
-    }
-
+.hero-content h1 {
+    font-size: 36px !important;
+    line-height: 1.08 !important;
+    margin: 0 0 18px 0 !important;
+}
     .hero-content .description {
         color: #cccccc !important;
         font-size: 17px !important;
@@ -788,10 +785,20 @@ footer p {
     }
 
     .hero-content .buttons {
-        display: flex !important;
-        justify-content: flex-start !important;
-        gap: 20px !important;
-    }
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 18px !important;
+    flex-wrap: nowrap !important;
+}
+
+.hero-content .buttons a {
+    white-space: nowrap;
+}
+
+.hero-content .book-button {
+    padding: 14px 25px !important;
+}
 
     .hero-image {
         display: none !important;
