@@ -443,6 +443,19 @@ header nav {
 header nav.active {
     display: flex;
 }
+
+.contact-form {
+    margin-bottom: 40px;
+}
+
+footer {
+    padding-top: 35px;
+    padding-bottom: 25px;
+}
+
+footer p {
+    margin: 8px 0;
+}
 }
 
 footer {
@@ -552,4 +565,25 @@ footer p {
     .menu-toggle {
         margin-left: auto;
     }
+}
+
+.services,
+.about,
+.gallery,
+.contact {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.about h2 {
+    font-size: 34px;
+    line-height: 1.2;
+}
+
+.about-content {
+    max-width: 100%;
+}
+
+.contact {
+    padding-top: 60px;
 }
