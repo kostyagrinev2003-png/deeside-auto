@@ -803,3 +803,31 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .leave-review-button:hover {
     background: #1a1a1a;
 }
+
+.review-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 18px;
+}
+
+.review-meta span {
+    font-weight: 600;
+}
+
+.review-meta small {
+    color: #888;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+    .review-meta {
+        align-items: flex-end;
+    }
+
+    .review-meta small {
+        font-size: 12px;
+    }
+}

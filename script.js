@@ -178,11 +178,22 @@ async function loadApprovedReviews() {
 
             const stars = "★".repeat(item.rating) + "☆".repeat(5 - item.rating);
 
-            card.innerHTML = `
-                <div class="stars">${stars}</div>
-                <p>"${item.review}"</p>
-                <span>— ${item.name}</span>
-            `;
+const reviewDate = item.created_at
+    ? new Date(item.created_at).toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+    })
+    : "";
+
+card.innerHTML = `
+    <div class="stars">${stars}</div>
+    <p>"${item.review}"</p>
+    <div class="review-meta">
+        <span>— ${item.name}</span>
+        <small>${reviewDate}</small>
+    </div>
+`;
 
             reviewCards.appendChild(card);
         });
