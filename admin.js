@@ -9,7 +9,7 @@ const loginMessage = document.querySelector("#login-message");
 const bookingList = document.querySelector("#booking-list");
 const reviewList = document.querySelector("#review-list");
 const logoutButton = document.querySelector("#logout-button");
-
+const bookingStats = document.querySelector("#booking-stats");
 
 loginForm.addEventListener("submit", async function (event) {
     event.preventDefault();
@@ -62,12 +62,45 @@ async function loadBookings() {
         bookingList.innerHTML = "<p>No bookings yet.</p>";
         return;
     }
+const pendingCount = data.filter(item => item.status === "pending").length;
+const acceptedCount = data.filter(item => item.status === "accepted").length;
+const rejectedCount = data.filter(item => item.status === "rejected").length;
 
+bookingStats.innerHTML = `
+    <button class="booking-filter" data-filter="pending"
+        style="background:#332d00; padding:10px 15px; border-radius:10px; border:none; color:white; cursor:pointer;">
+        🟡 Pending: <strong>${pendingCount}</strong>
+    </button>
+
+    <button class="booking-filter" data-filter="accepted"
+        style="background:#12351d; padding:10px 15px; border-radius:10px; border:none; color:white; cursor:pointer;">
+        🟢 Accepted: <strong>${acceptedCount}</strong>
+    </button>
+
+    <button class="booking-filter" data-filter="rejected"
+        style="background:#3b1515; padding:10px 15px; border-radius:10px; border:none; color:white; cursor:pointer;">
+        🔴 Rejected: <strong>${rejectedCount}</strong>
+    </button>
+
+    <button class="booking-filter" data-filter="all"
+        style="background:#222; padding:10px 15px; border-radius:10px; border:1px solid #444; color:white; cursor:pointer;">
+        All
+    </button>
+`;
     bookingList.innerHTML = "";
+const statusOrder = {
+    pending: 1,
+    accepted: 2,
+    rejected: 3
+};
 
+data.sort((a, b) => {
+    return (statusOrder[a.status] || 99) - (statusOrder[b.status] || 99);
+});
     data.forEach(function (booking) {
         const card = document.createElement("div");
         card.className = "review-card";
+        card.dataset.status = booking.status || "pending";
 
         const status = booking.status || "pending";
 
@@ -82,9 +115,12 @@ async function loadBookings() {
             <p><strong>Car / message:</strong> ${escapeHtml(booking.message || "-")}</p>
 
             <p>
-                <strong>Status:</strong>
-                ${escapeHtml(status)}
-            </p>
+    <strong>Status:</strong>
+    ${status === "pending" ? "🟡 Pending" :
+      status === "accepted" ? "🟢 Accepted" :
+      status === "rejected" ? "🔴 Rejected" :
+      escapeHtml(status)}
+</p>
 
             <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:15px;">
                 <button class="booking-accept" data-id="${booking.id}">
@@ -103,7 +139,21 @@ async function loadBookings() {
 
         bookingList.appendChild(card);
     });
+document.querySelectorAll(".booking-filter").forEach(function (button) {
+    button.addEventListener("click", function () {
+        const filter = button.dataset.filter;
 
+        document.querySelectorAll("#booking-list .review-card").forEach(function (card) {
+            const status = card.dataset.status;
+
+            if (filter === "all" || status === filter) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
+});
     document.querySelectorAll(".booking-accept").forEach(function (button) {
         button.addEventListener("click", async function () {
             await updateBooking(button.dataset.id, "accepted");
@@ -132,13 +182,18 @@ async function updateBooking(id, status) {
 
     if (error) {
         console.error(error);
-        alert("Could not update booking.");
+
+        if (error.code === "23505" && status === "accepted") {
+            alert("This time is already booked.");
+        } else {
+            alert("Could not update booking.");
+        }
+
         return;
     }
 
     await loadBookings();
 }
-
 
 async function deleteBooking(id) {
     const confirmed = confirm(

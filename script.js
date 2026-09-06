@@ -32,12 +32,28 @@ form.addEventListener("submit", async function (event) {
             body: JSON.stringify(bookingData)
         });
 
-        if (response.ok) {
-            message.textContent =
-                "✓ Booking request sent successfully!";
-            message.className = "form-message success";
-            form.reset();
-        } else {
+       if (response.ok) {
+    try {
+        formData.appendformData.append(
+    "_subject",
+    `New booking: ${formData.get("service")} — ${formData.get("date")} — ${formData.get("time")}`
+);("_subject", "New booking — DEESIDE AUTO");
+
+        await fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+                "Accept": "application/json"
+            }
+        });
+    } catch (emailError) {
+        console.error("Email notification failed:", emailError);
+    }
+
+    message.textContent = "✓ Booking request sent successfully!";
+    message.className = "form-message success";
+    form.reset();
+} else {
             console.error(await response.text());
 
             message.textContent =
