@@ -3,155 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>DEESIDE AUTO — Admin</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            background: #111;
-            color: white;
-            font-family: Arial, sans-serif;
-        }
-
-        .admin-container {
-            width: min(900px, 90%);
-            margin: 60px auto;
-        }
-
-        h1 {
-            margin-bottom: 35px;
-        }
-
-        .login-box {
-            max-width: 420px;
-            padding: 30px;
-            background: #181818;
-            border: 1px solid #333;
-            border-radius: 15px;
-        }
-
-        input {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 15px;
-            background: #111;
-            color: white;
-            border: 1px solid #444;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-        button {
-            padding: 13px 22px;
-            background: white;
-            color: #111;
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        button:hover {
-            opacity: 0.85;
-        }
-
-        #login-error {
-            color: #ff6b6b;
-            margin-top: 15px;
-        }
-
-        #reviews-panel {
-            display: none;
-        }
-
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .review-card {
-            background: #181818;
-            border: 1px solid #333;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 20px;
-        }
-
-        .review-card p {
-            color: #ccc;
-        }
-
-        .pending {
-            color: #ffd43b;
-        }
-
-        .approved {
-            color: #51cf66;
-        }
-        .approve-button {
-    background: #51cf66;
-    color: #111;
-}
-
-.delete-button {
-    background: #ff4d4d;
-    color: white;
-}
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="admin-container">
+<header>
+    <div class="logo">DEESIDE AUTO — ADMIN</div>
+</header>
 
-        <h1>DEESIDE AUTO — Admin</h1>
+<main style="padding: 120px 5% 60px; min-height: 100vh;">
 
-        <div id="login-section" class="login-box">
+    <section id="login-section">
+        <h2>Admin Login</h2>
 
-            <h2>Admin Login</h2>
-
+        <form id="admin-login">
             <input
                 type="email"
                 id="admin-email"
                 placeholder="Email"
+                required
             >
 
             <input
                 type="password"
                 id="admin-password"
                 placeholder="Password"
+                required
             >
 
-            <button id="login-button">Log In</button>
+            <button type="submit">Login</button>
 
-            <div id="login-error"></div>
+            <p id="login-message"></p>
+        </form>
+    </section>
 
+
+    <section id="admin-panel" style="display:none;">
+
+        <button id="logout-button">Logout</button>
+
+        <h2>Bookings</h2>
+
+        <div id="booking-list">
+            Loading bookings...
         </div>
 
-        <div id="reviews-panel">
 
-            <div class="top-bar">
-                <h2>Customer Reviews</h2>
-                <button id="logout-button">Log Out</button>
-            </div>
+        <h2 style="margin-top:60px;">Reviews</h2>
 
-            <div id="reviews-list">
-                Loading reviews...
-            </div>
-
+        <div id="review-list">
+            Loading reviews...
         </div>
 
-    </div>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="admin.js"></script>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="admin.js"></script>
 
 </body>
 </html>

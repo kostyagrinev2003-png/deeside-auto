@@ -9,26 +9,45 @@ form.addEventListener("submit", async function (event) {
 
     const formData = new FormData(form);
 
+    const bookingData = {
+    name: formData.get("name"),
+    email: formData.get("email"),
+    phone: formData.get("phone"),
+    service: formData.get("service"),
+    booking_date: formData.get("date"),
+    booking_time: formData.get("time"),
+    message: formData.get("message"),
+    status: "pending"
+};
+
     try {
-        const response = await fetch(form.action, {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/booking`, {
             method: "POST",
-            body: formData,
             headers: {
-                Accept: "application/json"
-            }
+                "apikey": SUPABASE_KEY,
+                "Authorization": `Bearer ${SUPABASE_KEY}`,
+                "Content-Type": "application/json",
+                "Prefer": "return=minimal"
+            },
+            body: JSON.stringify(bookingData)
         });
 
         if (response.ok) {
             message.textContent =
-                "✓ Request sent successfully! We'll contact you shortly.";
+                "✓ Booking request sent successfully!";
             message.className = "form-message success";
             form.reset();
         } else {
+            console.error(await response.text());
+
             message.textContent =
                 "Something went wrong. Please try again.";
             message.className = "form-message error";
         }
+
     } catch (error) {
+        console.error(error);
+
         message.textContent =
             "Something went wrong. Please try again.";
         message.className = "form-message error";
@@ -204,3 +223,69 @@ card.innerHTML = `
 }
 
 loadApprovedReviews();
+
+// ===== DISABLE BOOKED TIMES =====
+
+const bookingDateInput = document.querySelector(
+    '#booking-form input[name="date"]'
+);
+
+const bookingTimeSelect = document.querySelector(
+    '#booking-form select[name="time"]'
+);
+
+async function loadBookedTimes(date) {
+    if (!date) return;
+
+    // Сначала снова включаем все часы
+    Array.from(bookingTimeSelect.options).forEach(option => {
+        if (option.value) {
+            option.disabled = false;
+            option.textContent = option.value;
+        }
+    });
+
+    try {
+        const response = await fetch(
+            `${SUPABASE_URL}/rest/v1/rpc/get_booked_times`,
+            {
+                method: "POST",
+                headers: {
+                    "apikey": SUPABASE_KEY,
+                    "Authorization": `Bearer ${SUPABASE_KEY}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    p_date: date
+                })
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error(await response.text());
+        }
+
+        const bookedTimes = await response.json();
+
+        bookedTimes.forEach(item => {
+            const bookedTime = item.booking_time.substring(0, 5);
+
+            const option = Array.from(
+                bookingTimeSelect.options
+            ).find(option => option.value === bookedTime);
+
+            if (option) {
+                option.disabled = true;
+                option.textContent = `${bookedTime} — Booked`;
+            }
+        });
+
+    } catch (error) {
+        console.error("Could not load booked times:", error);
+    }
+}
+
+bookingDateInput.addEventListener("change", function () {
+    bookingTimeSelect.value = "";
+    loadBookedTimes(this.value);
+});
