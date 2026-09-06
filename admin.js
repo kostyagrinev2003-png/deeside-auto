@@ -70,6 +70,17 @@ async function loadReviews() {
     }
 
     reviewsList.innerHTML = "";
+    const pendingCount = reviews.filter(review => !review.approved).length;
+
+const counter = document.createElement("div");
+counter.style.marginBottom = "20px";
+counter.style.fontSize = "18px";
+counter.style.fontWeight = "bold";
+counter.textContent = `Pending reviews: ${pendingCount}`;
+
+reviewsList.appendChild(counter);
+
+reviews.sort((a, b) => Number(a.approved) - Number(b.approved));
 
     reviews.forEach((review) => {
 
