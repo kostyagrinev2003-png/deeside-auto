@@ -34,10 +34,10 @@ form.addEventListener("submit", async function (event) {
 
        if (response.ok) {
     try {
-        formData.appendformData.append(
+      formData.append(
     "_subject",
     `New booking: ${formData.get("service")} — ${formData.get("date")} — ${formData.get("time")}`
-);("_subject", "New booking — DEESIDE AUTO");
+);
 
         await fetch(form.action, {
             method: "POST",
