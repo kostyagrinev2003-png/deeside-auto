@@ -89,7 +89,7 @@ async function loadReviews() {
             <p>${escapeHtml(review.review)}</p>
             <p>Status: ${status}</p>
 
-            ${
+              ${
                 review.approved
                     ? ""
                     : `<button class="approve-button"
@@ -97,6 +97,11 @@ async function loadReviews() {
                          Approve
                        </button>`
             }
+
+            <button class="delete-button"
+                data-id="${review.id}">
+                Delete
+            </button>
         `;
 
         reviewsList.appendChild(card);
@@ -115,6 +120,32 @@ async function loadReviews() {
 
             if (error) {
                 alert("Could not approve review.");
+                console.error(error);
+                return;
+            }
+
+            await loadReviews();
+        });
+    });
+    document.querySelectorAll(".delete-button").forEach(button => {
+
+        button.addEventListener("click", async () => {
+
+            const id = button.dataset.id;
+
+            const confirmed = confirm("Delete this review?");
+
+            if (!confirmed) {
+                return;
+            }
+
+            const { error } = await supabaseClient
+                .from("reviews")
+                .delete()
+                .eq("id", id);
+
+            if (error) {
+                alert("Could not delete review.");
                 console.error(error);
                 return;
             }
